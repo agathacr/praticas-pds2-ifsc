@@ -14,11 +14,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class CadastroAnimal extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtMarca;
+	private JTextField txtRegiaovive;
 	private JTextField txtEspecie;
 	private JLabel lblEspecie;
 
@@ -46,43 +47,51 @@ public class CadastroAnimal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 153, 255));
+		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblMarca = new JLabel("Marca");
-		lblMarca.setBounds(106, 74, 46, 14);
-		contentPane.add(lblMarca);
+		JLabel lblRegiaovive = new JLabel("Região que vive:");
+		lblRegiaovive.setForeground(new Color(204, 255, 255));
+		lblRegiaovive.setBounds(66, 115, 86, 14);
+		contentPane.add(lblRegiaovive);
 		
-		txtMarca = new JTextField();
-		txtMarca.setBounds(253, 71, 86, 20);
-		contentPane.add(txtMarca);
-		txtMarca.setColumns(10);
+		txtRegiaovive = new JTextField();
+		txtRegiaovive.setBackground(new Color(0, 204, 255));
+		txtRegiaovive.setBounds(173, 112, 86, 20);
+		contentPane.add(txtRegiaovive);
+		txtRegiaovive.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setForeground(new Color(0, 0, 0));
+		btnCadastrar.setBackground(new Color(51, 0, 255));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String marca = txtMarca.getText();
+				String regiaovive = txtRegiaovive.getText();
 				String especie = txtEspecie.getText();
 				
 				Animal a = new Animal();
-				a.setMarca(marca);
+				a.setRegiaovive(regiaovive);
 				a.setEspecie(especie);
 				AnimalDAO dao = new AnimalDAO();
 				dao.inserir(a);
 			}
 		});
-		btnCadastrar.setBounds(173, 149, 99, 23);
+		btnCadastrar.setBounds(173, 161, 86, 23);
 		contentPane.add(btnCadastrar);
 		
 		txtEspecie = new JTextField();
+		txtEspecie.setBackground(new Color(0, 204, 255));
 		txtEspecie.setColumns(10);
-		txtEspecie.setBounds(253, 118, 86, 20);
+		txtEspecie.setBounds(173, 75, 86, 20);
 		contentPane.add(txtEspecie);
 		
-		lblEspecie = new JLabel("Espécie");
-		lblEspecie.setBounds(106, 121, 46, 14);
+		lblEspecie = new JLabel("Espécie:");
+		lblEspecie.setForeground(new Color(204, 255, 255));
+		lblEspecie.setBounds(106, 78, 46, 14);
 		contentPane.add(lblEspecie);
 	}
 }
